@@ -4,6 +4,7 @@ from telethon import TelegramClient
 from dotenv import load_dotenv
 load_dotenv()
 async def main():
+    print("Dastur boshlandi...")
     api_id = os.getenv('API_ID')
     api_hash = os.getenv('API_HASH')
     phone = os.getenv('PHONE')
@@ -19,4 +20,4 @@ async def main():
         await client.send_message(username, message)
         print(f"Yuborildi: {message}")
         await asyncio.sleep(interval)
-        asyncio.run(main())
+asyncio.run(main())
