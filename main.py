@@ -5,30 +5,25 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-api_id = int(os.getenv('API_ID'))
-api_hash = os.getenv('API_HASH')
-phone = os.getenv('PHONE')
-
-client = TelegramClient('session', api_id, api_hash)
-
 async def main():
-    await client.start(phone)
-        
-            username = 'Oisha_0208'
-                message = 'Salom!'
-                    interval = 60  # soniyada
-                        
-                            while True:
-                                    await client.send_message(username, message)
-                                            print(f"Yuborildi: {message}")
-                                                    await asyncio.sleep(interval)
-
-                                                    with client:
-                                                        client.loop.run_until_complete(main())
-                                                    
-
-                                                    
-                                                
+    api_id = os.getenv('API_ID')
+        api_hash = os.getenv('API_HASH')
+            phone = os.getenv('PHONE')
+                username = os.getenv('TARGET_USERNAME')
+                    
+                        if not api_id or not api_hash or not phone or not username:
+                                print("Xatolik: .env faylini tekshiring!")
+                                        return
                                             
+                                                client = TelegramClient('session', int(api_id), api_hash)
+                                                    await client.start(phone)
                                                         
-                                                        
+                                                            message = 'Salom!'
+                                                                interval = 60
+                                                                    
+                                                                        while True:
+                                                                                await client.send_message(username, message)
+                                                                                        print(f"Yuborildi: {message}")
+                                                                                                await asyncio.sleep(interval)
+
+                                                                                                asyncio.run(main())
