@@ -14,7 +14,7 @@ async def main():
         return                             
     client = TelegramClient('session', int(api_id), api_hash)
     await client.start(phone)                                                   
-    message = 'Salom!'
+    message = "Sizni yaxshi ko'raman!"
     interval = 60                                                   
     while True:
         await client.send_message(username, message)
