@@ -13,11 +13,21 @@ async def main():
         print("Xatolik: .env faylini tekshiring!")
         return                             
     client = TelegramClient('session', int(api_id), api_hash)
-    await client.start(phone)                                                   
-    message = "Sizni yaxshi ko'raman!"
-    interval = 60                                                   
+    await client.start(phone)                                             
+    interval = 60   
+    messages = [
+    "☺️",
+    "Sizni yaxshi ko'raman!",
+    'Siz meni asalimsiz.',
+    'Muslima, soliha ayolimsiz',
+    "Siz meni nozik go'zal gulimsiz",
+    "😚"
+    ]                                          
+    index = 0                                            
     while True:
+        message = messages[index]
         await client.send_message(username, message)
-        print(f"Yuborildi: {message}")
+        print(f"✅ Yuborildi: {message}")       
+        index = (index + 1) % len(messages)
         await asyncio.sleep(interval)
 asyncio.run(main())
